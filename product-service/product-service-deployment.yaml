@@ -16,6 +16,7 @@ spec:
       containers:
       - name: product-service
         image: 181408841854.dkr.ecr.us-east-2.amazonaws.com/product-service:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 5002
 
