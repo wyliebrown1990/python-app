@@ -1,21 +1,21 @@
-# user-service-deployment.yaml
+# product-service-deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: user-service
+  name: product-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: user-service
+      app: product-service
   template:
     metadata:
       labels:
-        app: user-service
+        app: product-service
     spec:
       containers:
-      - name: user-service
-        image: wyliebrown1990/user-service:latest
+      - name: product-service
+        image: 181408841854.dkr.ecr.us-east-2.amazonaws.com/product-service:latest
         ports:
         - containerPort: 5002
 
@@ -23,11 +23,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: user-service
+  name: product-service
 spec:
   type: ClusterIP
   ports:
   - port: 5002
     targetPort: 5002
   selector:
-    app: user-service
+    app: product-service

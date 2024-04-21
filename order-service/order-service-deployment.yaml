@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: order-service
-        image: wyliebrown1990/order-service:latest
+        image: 181408841854.dkr.ecr.us-east-2.amazonaws.com/order-service:latest
         ports:
         - containerPort: 5003
 

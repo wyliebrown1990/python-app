@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: user-service
-        image: wyliebrown1990/user-service:latest
+        image: 181408841854.dkr.ecr.us-east-2.amazonaws.com/user-service:latest
         ports:
         - containerPort: 5001
 
