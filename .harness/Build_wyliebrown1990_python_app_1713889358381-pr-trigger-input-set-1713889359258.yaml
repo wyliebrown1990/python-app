@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_wyliebrown1990_python_app_1713889358381-pr-trigger-input-set
+  identifier: Build_wyliebrown1990_python_app_1713889358381prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_wyliebrown1990_python_app_1713889358381
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
