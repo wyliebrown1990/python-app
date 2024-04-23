@@ -1,0 +1,17 @@
+# Use an official Nginx image as the base
+FROM nginx:alpine
+
+# Set the working directory inside the container
+WORKDIR /usr/share/nginx/html
+
+# Remove any existing files in the directory
+RUN rm -rf *
+
+# Copy only the necessary files
+COPY frontend.html .
+
+# Expose port 80 for the container
+EXPOSE 80
+
+# Start Nginx and keep it running
+CMD ["nginx", "-g", "daemon off;"]

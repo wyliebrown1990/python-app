@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microservice Shop</title>
+</head>
+<body>
+    <h1>Product Catalog</h1>
+    <button onclick="fetchProduct(1)">Get Laptop</button>
+    <button onclick="fetchProduct(2)">Get Smartphone</button>
+    <div id="product-info"></div>
+
+    <script>
+    function fetchProduct(productId) {
+        fetch(`http://localhost:5002/products/${productId}`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('product-info').innerHTML = 
+                    `<p>Name: ${data.name}<br>Price: $${data.price}</p>`;
+            })
+            .catch(error => console.error('Error:', error));
+    }
+    </script>
+</body>
+</html>

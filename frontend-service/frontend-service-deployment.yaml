@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  labels:
+    app: frontend
+spec:
+  replicas: 2  # You can adjust the number of replicas based on your needs
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: 1181408841854.dkr.ecr.us-east-2.amazonaws.com/frontend-service@sha256:e0d3e390dcfb3dbfdefa8a9fff7cc2b53420126300c6fc9b5eabdede72f4186a  # Ensure this matches the tag used in your Docker registry
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80  # Nginx listens on port 80 by default
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+spec:
+  type: LoadBalancer  # Exposes the service externally using a cloud provider's load balancer
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+  selector:
+    app: frontend
